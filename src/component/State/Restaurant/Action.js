@@ -237,7 +237,7 @@ export const createCategoryAction = ({req, jwt}) => {
     return async (dispatch) => {
         dispatch({type: CREATE_CATEGORY_REQUEST});
                 try {
-                    const res = await api.post('/api/admin/category', req.data, {
+                    const res = await api.post('api/admin/category', req.data, {
                         headers: {
                             Authorization: `Bearer ${jwt}`
                         }

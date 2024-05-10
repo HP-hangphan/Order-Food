@@ -34,6 +34,7 @@ export const menuItemReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         menuItems: action.payload,
+        message: action.payload
       };
     case actionType.DELETE_MENU_ITEM_SUCCESS:
       return {

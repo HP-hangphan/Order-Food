@@ -10,7 +10,7 @@ import {
 export const getIngredientOfRestaurant = ({id, jwt}) => {
     return async (dispatch) => {
         try {
-            const response = await api.get(`/api/admin/ingredients/${id}`, {
+            const response = await api.get(`/api/admin/ingredient/restaurant/${id}`, {
                 headers: {
                     Authorization: `Bearer ${jwt}`
                 }
@@ -26,7 +26,7 @@ export const getIngredientOfRestaurant = ({id, jwt}) => {
 export const createIngredient = ({data, jwt}) => {
     return async (dispatch) => {
         try {
-            const response = await api.post('/api/admin/ingredients', data, {
+            const response = await api.post('/api/admin/ingredient', data, {
                 headers: {
                     Authorization: `Bearer ${jwt}`
                 }
@@ -42,7 +42,7 @@ export const createIngredient = ({data, jwt}) => {
 export const createIngredientCategory = ({data, jwt}) => {
     return async(dispatch) => {
         try {
-            const response = await api.post('/api/admin/ingredients/category', data, {
+            const response = await api.post('/api/admin/ingredient/category', data, {
                 headers: {
                     Authorization: `Bearer ${jwt}`
                 }
@@ -59,7 +59,7 @@ export const createIngredientCategory = ({data, jwt}) => {
 export const getIngredientCategory = ({id, jwt}) => {
     return async(dispatch) => {
         try {
-            const response = await api.get(`/api/admin/ingredients/restaurant/${id}/category`, {
+            const response = await api.get(`/api/admin/ingredient/restaurant/${id}/category`, {
                 headers: {
                     Authorization: `Bearer ${jwt}`
                 }

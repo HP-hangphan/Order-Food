@@ -52,6 +52,7 @@ const ProfileNavigation = ({ open, handleClose }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleNavigate = (item) => {
+    console.log(item)
     if (item.title === "Logout") {
       dispatch(logout());
       navigate('/');

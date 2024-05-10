@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from '@mui/material/Button';
+import { categorizeIngredients } from "../State/Utils/categoryIngredients";
 
 // const ingredients = [
 //     {
@@ -36,7 +37,7 @@ const demo = [
   },
 ];
 
-const MenuCard = () => {
+const MenuCard = ({item}) => {
     const handleCheckboxChange = (value) => {
         console.log(value)
     }
@@ -52,13 +53,13 @@ const MenuCard = () => {
             <div className="lg:flex items-center lg:gap-5">
               <img
                 className="w-[7rem] h-[7rem] object-cover"
-                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emF8ZW58MHx8MHx8fDA%3D"
+                src={item.images}
                 alt=""
               />
               <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
-                <p className="font-semibold text-xl">Burger</p>
-                <p>39.000đ</p>
-                <p className="text-gray-500">nice food</p>
+                <p className="font-semibold text-xl">{item.name}</p>
+                <p>{item.price}.000d</p>
+                <p className="text-gray-500">{item.description}</p>
               </div>
             </div>
           </div>
@@ -66,12 +67,12 @@ const MenuCard = () => {
         <AccordionDetails>
           <form>
             <div className="flex gap-5 flex-wrap">
-              {demo.map((item) => (
+              {Object.keys(categorizeIngredients(item.ingredients)).map((category) => (
                 <div>
-                  <p>{item.category}</p>
+                  <p>{category}</p>
                   <FormGroup>
-                    {item.ingredient.map((item) => (
-                      <FormControlLabel control={<Checkbox onChange={() => handleCheckboxChange(item)}/>} label={item} />
+                    {categorizeIngredients(item.ingredients)[category].map((item) => (
+                      <FormControlLabel key = {item.name} control={<Checkbox onChange={() => handleCheckboxChange(item)}/>} label={item.name} />
                     ))}
                   </FormGroup>
                 </div>

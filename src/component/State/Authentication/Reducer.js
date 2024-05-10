@@ -6,7 +6,7 @@ const initialState = {
     isLoading: false,
     error:null,
     jwt:null,
-    favorites:[],
+    favourites:[],
     success:null
 }
 export const authReducer = (state = initialState, action) => {
@@ -26,13 +26,13 @@ export const authReducer = (state = initialState, action) => {
                     };
         case GET_USER_SUCCESS:
             return {
-                ...state, isLoading: false, user: action.payload
+                ...state, isLoading: false, user: action.payload, favourites: action.payload.favourites
                     };
             
         case ADD_TO_FAVORITE_SUCCESS:
             return {
-                ...state, isLoading: false,error:null, favorites: isPresentInFavorites(state.favorites, action.payload) ? state.favorites.filter((item) => item.id !== action.payload.id):
-                [action.payload, ...state.favorites]
+                ...state, isLoading: false,error:null, favourites: isPresentInFavorites(state.favourites, action.payload) ? state.favourites.filter((item) => item.id !== action.payload.id):
+                [action.payload, ...state.favourites]
                     };
         case LOGOUT:
             return initialState;
